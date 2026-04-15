@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TechNest â€“ Shopping Cart" />
+  <title>Cart | TechNest</title>
+  <!-- IA#2 â€” External stylesheet -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- IA#2 â€” Navigation -->
+  <nav aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" id="logo">TechNest ðŸ›’</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li>
+          <a href="cart.html" class="cart-link active" aria-label="Shopping cart">
+            ðŸ›’ Cart
+            <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section" aria-labelledby="cart-heading">
+      <div class="container">
+        <p class="section-label">Shopping</p>
+        <h1 id="cart-heading">Your Cart</h1>
+
+        <!-- IA#2 â€” Empty cart state (shown/hidden via JS) -->
+        <div id="cart-empty" class="empty-state" style="display:none;" aria-live="polite">
+          <div class="empty-icon" aria-hidden="true">ðŸ›’</div>
+          <h3>Your cart is empty</h3>
+          <p>Looks like you haven't added anything yet.</p>
+          <a href="products.html" class="btn btn-solid mt-1">Start Shopping</a>
+        </div>
+
+        <!-- IA#2 â€” Cart table (shown/hidden via JS) -->
+        <div id="cart-table-wrap" style="display:none;">
+
+          <!-- IA#2 â€” Cart action buttons -->
+          <div class="flex-between mb-1">
+            <button class="btn btn-danger btn-sm" onclick="clearAllCart()" aria-label="Clear all items from cart">
+              Clear All
+            </button>
+            <a href="products.html" class="btn btn-sm">Continue Shopping</a>
+          </div>
+
+          <!-- IA#2 â€” Responsive table wrapper -->
+          <div style="overflow-x:auto;">
+            <table aria-label="Shopping cart items">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Sub-total</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <!-- IA#2 â€” DOM target: renderCart() writes rows here -->
+              <tbody id="cart-tbody"></tbody>
+            </table>
+          </div>
+
+          <!-- IA#2 â€” Cart summary + checkout button -->
+          <div id="cart-summary" class="cart-summary mt-2" style="max-width:400px; margin-left:auto;" aria-label="Order summary">
+            <h3>Order Summary</h3>
+
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="sum-subtotal">J$0</span>
+            </div>
+            <div class="summary-row">
+              <span>Discount <small style="color:var(--clr-text);">(10% on orders â‰¥ J$10,000)</small></span>
+              <span id="sum-discount" class="accent">J$0</span>
+            </div>
+            <div class="summary-row">
+              <span>GCT (15%)</span>
+              <span id="sum-tax">J$0</span>
+            </div>
+            <div class="summary-row summary-total">
+              <span>Total</span>
+              <span id="sum-total">J$0</span>
+            </div>
+
+            <div style="margin-top:1.2rem; display:flex; gap:0.8rem; flex-wrap:wrap;">
+              <a href="checkout.html" class="btn btn-solid" style="flex:1; text-align:center;">
+                Check Out
+              </a>
+              <button class="btn btn-danger" onclick="clearAllCart()" style="flex:1;" aria-label="Clear cart">
+                Clear All
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2026 <span class="accent">TechNest</span> &mdash;
+        <a href="mailto:karlylesambursley@students.utech.edu.jm">karlylesambursley@students.utech.edu.jm</a> |
+        <a href="tel:+18764857305">(876) 4857305</a>
+      </p>
+      <p>Designed &amp; Built by Karlyle Ambursley &bull; 2111685 &bull; CIT2011 Web Programming</p>
+    </div>
+  </footer>
+
+  <!-- IA#2 â€” External JS -->
+  <script src="./script.js"></script>
+  <script>
+    /* IA#2 â€” Render cart on page load */
+    renderCart();
+  </script>
+
+</body>
+</html>
+

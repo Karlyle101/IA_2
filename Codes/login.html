@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TechNest – Login to your account" />
+  <title>Login | TechNest</title>
+  <!-- IA#2 — External stylesheet -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- IA#2 — Navigation -->
+  <nav aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" id="logo">TechNest 🛒</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="login.html" class="active">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li>
+          <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+            🛒 Cart
+            <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section flex-center" style="min-height:80vh;" aria-labelledby="login-heading">
+      <div style="width:100%; max-width:440px;">
+
+        <div class="card">
+          <p class="section-label text-center">Welcome Back</p>
+          <h1 id="login-heading" class="text-center" style="font-size:1.8rem; margin-bottom:1.5rem;">
+            Sign In
+          </h1>
+
+          <!-- IA#2 — Alert message (shown on error) -->
+          <div class="alert alert-error" id="login-alert" role="alert"></div>
+
+          <!-- IA#2 — Login form with validation -->
+          <form id="login-form" novalidate aria-label="Login form" onsubmit="handleLogin(event)">
+
+            <div class="form-group">
+              <label for="login-username">Username *</label>
+              <input
+                type="text"
+                id="login-username"
+                placeholder="Enter your username"
+                autocomplete="username"
+                required
+                aria-required="true"
+              />
+              <p class="field-error" id="login-username-err" role="alert"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="login-password">Password *</label>
+              <input
+                type="password"
+                id="login-password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+                aria-required="true"
+              />
+              <p class="field-error" id="login-password-err" role="alert"></p>
+            </div>
+
+            <!-- IA#2 — Remember me checkbox -->
+            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1.2rem;">
+              <input type="checkbox" id="remember-me" style="width:auto;" />
+              <label for="remember-me" style="margin-bottom:0; font-size:0.88rem; color:var(--clr-text);">
+                Remember me
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-solid" style="width:100%;" aria-label="Sign in">
+              Sign In
+            </button>
+
+          </form>
+
+          <p class="text-center mt-1" style="font-size:0.9rem;">
+            Don't have an account? <a href="register.html">Register here</a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2026 <span class="accent">TechNest</span> &mdash;
+        <a href="mailto:karlylesambursley@students.utech.edu.jm">karlylesambursley@students.utech.edu.jm</a> |
+        <a href="tel:+18764857305">(876) 4857305</a>
+      </p>
+      <p>Designed &amp; Built by Karlyle Ambursley &bull; 2111685 &bull; CIT2011 Web Programming</p>
+    </div>
+  </footer>
+
+  <!-- IA#2 — External JS -->
+  <script src="../script.js"></script>
+  <script>
+    /* IA#2 — Event listener: form submit → handleLogin */
+    document.getElementById("login-form").addEventListener("submit", handleLogin);
+
+    /* IA#2 — Event listener: clear error on input */
+    ["login-username", "login-password"].forEach(id => {
+      document.getElementById(id).addEventListener("input", function () {
+        clearError(id);
+        const alertEl = document.getElementById("login-alert");
+        if (alertEl) alertEl.classList.remove("show");
+      });
+    });
+  </script>
+
+</body>
+</html>

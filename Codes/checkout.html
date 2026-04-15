@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TechNest – Checkout" />
+  <title>Checkout | TechNest</title>
+  <!-- IA#2 — External stylesheet -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- IA#2 — Navigation -->
+  <nav aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" id="logo">TechNest 🛒</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li>
+          <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+            🛒 Cart
+            <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section" aria-labelledby="checkout-heading">
+      <div class="container">
+        <p class="section-label">Checkout</p>
+        <h1 id="checkout-heading">Complete Your Order</h1>
+
+        <!-- IA#2 — Order success message (hidden until order confirmed) -->
+        <div id="order-success" style="display:none;" class="card text-center" aria-live="assertive">
+          <div style="font-size:3rem; margin-bottom:1rem;" aria-hidden="true">✅</div>
+          <h2>Order Confirmed!</h2>
+          <p>Thank you for shopping with TechNest. Your order is being processed.</p>
+          <a href="products.html" class="btn btn-solid mt-1">Continue Shopping</a>
+        </div>
+
+        <!-- IA#2 — Checkout layout: form + summary (CSS Grid) -->
+        <div id="checkout-form-wrap" class="checkout-layout mt-2">
+
+          <!-- IA#2 — Shipping details form -->
+          <div>
+            <h2>Shipping Details</h2>
+            <form id="checkout-form" novalidate aria-label="Shipping details form">
+
+              <div class="form-group">
+                <label for="co-name">Full Name *</label>
+                <input type="text" id="co-name" placeholder="e.g. Karlyle Ambursley" autocomplete="name" required />
+                <p class="field-error" id="co-name-err" role="alert"></p>
+              </div>
+
+              <div class="form-group">
+                <label for="co-address">Street Address *</label>
+                <input type="text" id="co-address" placeholder="e.g. 12 Main Street" autocomplete="street-address" required />
+                <p class="field-error" id="co-address-err" role="alert"></p>
+              </div>
+
+              <div class="grid-2">
+                <div class="form-group">
+                  <label for="co-city">City / Parish *</label>
+                  <input type="text" id="co-city" placeholder="e.g. Kingston" autocomplete="address-level2" required />
+                  <p class="field-error" id="co-city-err" role="alert"></p>
+                </div>
+                <div class="form-group">
+                  <label for="co-phone">Phone Number *</label>
+                  <input type="tel" id="co-phone" placeholder="e.g. (876) 4857305" autocomplete="tel" required />
+                  <p class="field-error" id="co-phone-err" role="alert"></p>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="co-notes">Delivery Notes (optional)</label>
+                <input type="text" id="co-notes" placeholder="e.g. Leave at gate" />
+              </div>
+
+              <!-- IA#2 — Form action buttons -->
+              <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;">
+                <button type="button" class="btn btn-solid" onclick="submitCheckout()" aria-label="Confirm order">
+                  Confirm Order
+                </button>
+                <button type="button" class="btn btn-danger" onclick="window.location.href='cart.html'" aria-label="Cancel and return to cart">
+                  Cancel
+                </button>
+                <button type="reset" class="btn" onclick="clearCheckoutForm()" aria-label="Clear form">
+                  Clear All
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- IA#2 — Order summary sidebar -->
+          <aside aria-label="Order summary">
+            <h2>Order Summary</h2>
+            <div class="cart-summary">
+              <!-- IA#2 — DOM target: renderCheckoutSummary() writes here -->
+              <div id="checkout-items"></div>
+
+              <div style="margin-top:1rem; border-top:1px solid var(--clr-border); padding-top:1rem;">
+                <div class="summary-row">
+                  <span>Subtotal</span>
+                  <span id="co-subtotal">J$0</span>
+                </div>
+                <div class="summary-row">
+                  <span>Discount</span>
+                  <span id="co-discount" class="accent">J$0</span>
+                </div>
+                <div class="summary-row">
+                  <span>GCT (15%)</span>
+                  <span id="co-tax">J$0</span>
+                </div>
+                <div class="summary-row summary-total">
+                  <span>Amount Due</span>
+                  <span id="co-total">J$0</span>
+                </div>
+              </div>
+
+              <div class="form-group mt-1">
+                <label for="co-amount">Amount Being Paid (J$)</label>
+                <input type="text" id="co-amount" readonly aria-label="Total amount to be paid" />
+              </div>
+
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- IA#2 — Confirmation modal -->
+  <div class="modal-overlay" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <h3 id="modal-title">Confirm Your Order</h3>
+      <p>Are you sure you want to place this order? This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button class="btn btn-solid" onclick="confirmOrder()" aria-label="Yes, confirm order">Yes, Confirm</button>
+        <button class="btn btn-danger" onclick="cancelCheckout()" aria-label="Cancel order">Cancel</button>
+        <button class="btn" onclick="cancelCheckout()" aria-label="Close modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2026 <span class="accent">TechNest</span> &mdash;
+        <a href="mailto:karlylesambursley@students.utech.edu.jm">karlylesambursley@students.utech.edu.jm</a> |
+        <a href="tel:+18764857305">(876) 4857305</a>
+      </p>
+      <p>Designed &amp; Built by Karlyle Ambursley &bull; 2111685 &bull; CIT2011 Web Programming</p>
+    </div>
+  </footer>
+
+  <!-- IA#2 — External JS -->
+  <script src="../script.js"></script>
+  <script>
+    /* IA#2 — Render checkout summary on page load */
+    renderCheckoutSummary();
+
+    /**
+     * clearCheckoutForm — resets all shipping fields
+     * Creator: Karlyle Ambursley
+     */
+    function clearCheckoutForm() {
+      /* IA#2 — DOM Manipulation: reset form fields */
+      ["co-name","co-address","co-city","co-phone","co-notes"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+        clearError(id);
+      });
+    }
+  </script>
+
+</body>
+</html>

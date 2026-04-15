@@ -1,0 +1,385 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TechNest â€“ Storyboard, Design System & References" />
+  <title>Storyboard | TechNest</title>
+  <!-- IA#2 â€” External stylesheet -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- IA#2 â€” Navigation -->
+  <nav aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" id="logo">TechNest ðŸ›’</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li>
+          <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+            ðŸ›’ Cart
+            <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- IA#2 â€” Student Details -->
+    <section class="section" aria-labelledby="sb-heading">
+      <div class="container">
+        <p class="section-label">IA#2 Storyboard</p>
+        <h1 id="sb-heading">Design Documentation</h1>
+
+        <div class="card mt-2">
+          <h3>Student Details</h3>
+          <ul class="info-list">
+            <li><span class="info-label">Student ID</span><span>2111685</span></li>
+            <li><span class="info-label">Full Name</span><span>Karlyle Ambursley</span></li>
+            <li><span class="info-label">Assignment</span><span>IA#2 â€” E-Commerce Website</span></li>
+            <li><span class="info-label">Module</span><span>Web Programming / CIT2011</span></li>
+            <li><span class="info-label">Day / Time</span><span>Wednesday / 12PM</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- IA#2 â€” Wireframes -->
+    <section class="section" id="wireframes" aria-labelledby="wf-heading">
+      <div class="container">
+        <p class="section-label">Layout Design</p>
+        <h2 id="wf-heading">Wireframes</h2>
+        <p>Two layouts â€” mobile (min 600px) and desktop (min 950px) â€” showing div groupings.</p>
+
+        <div class="grid-2 mt-2">
+
+          <!-- Mobile Wireframe -->
+          <div>
+            <h3>Mobile Layout (min 600px)</h3>
+            <div class="wireframe" role="img" aria-label="Mobile wireframe layout">
+              <p class="wf-label">&lt;nav&gt; â€” sticky</p>
+              <div class="wf-block">#logo | nav-links (wrap)</div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;section.hero&gt;</p>
+              <div class="wf-block">.hero-content (column)</div>
+              <div class="wf-block">.hero-visual (below)</div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;section&gt; â€” Features</p>
+              <div class="wf-block">.grid-3 â†’ 1 column</div>
+              <div class="wf-block">.card Ã— 3</div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;section&gt; â€” Products</p>
+              <div class="wf-block">.grid-3 â†’ 1 column</div>
+              <div class="wf-block">.product-card Ã— n</div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;section&gt; â€” Cart</p>
+              <div class="wf-block">table (scroll-x)</div>
+              <div class="wf-block">.cart-summary (full width)</div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;section&gt; â€” Checkout</p>
+              <div class="wf-block">.checkout-layout â†’ 1 column</div>
+              <div class="wf-block">form | aside (stacked)</div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;footer&gt;</p>
+              <div class="wf-block">Footer text (centered)</div>
+            </div>
+          </div>
+
+          <!-- Desktop Wireframe -->
+          <div>
+            <h3>Desktop Layout (min 950px)</h3>
+            <div class="wireframe" role="img" aria-label="Desktop wireframe layout">
+              <p class="wf-label">&lt;nav&gt; â€” sticky</p>
+              <div class="wf-row">
+                <div class="wf-block">#logo</div>
+                <div class="wf-block" style="flex:3;">nav-links (inline)</div>
+              </div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;section.hero&gt;</p>
+              <div class="wf-row">
+                <div class="wf-block" style="flex:2;">.hero-content (left)</div>
+                <div class="wf-block">.hero-visual (right)</div>
+              </div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;section&gt; â€” Features</p>
+              <div class="wf-row">
+                <div class="wf-block">.card</div>
+                <div class="wf-block">.card</div>
+                <div class="wf-block">.card</div>
+              </div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;section&gt; â€” Products</p>
+              <div class="wf-row">
+                <div class="wf-block">.product-card</div>
+                <div class="wf-block">.product-card</div>
+                <div class="wf-block">.product-card</div>
+              </div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;section&gt; â€” Checkout</p>
+              <div class="wf-row">
+                <div class="wf-block" style="flex:2;">Shipping Form</div>
+                <div class="wf-block">Order Summary</div>
+              </div>
+
+              <p class="wf-label" style="margin-top:0.6rem;">&lt;footer&gt;</p>
+              <div class="wf-block">Footer text (centered)</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- IA#2 â€” Colour Palette -->
+    <section class="section" id="palette" aria-labelledby="palette-heading">
+      <div class="container">
+        <p class="section-label">Design System</p>
+        <h2 id="palette-heading">Colour Palette, Typography &amp; Icons</h2>
+
+        <h3>Colour Palette</h3>
+        <p style="font-size:0.9rem; margin-bottom:1rem;">
+          The palette uses deep navy/black backgrounds with a bold red accent (#e94560),
+          evoking trust, urgency, and modernity â€” ideal for an e-commerce tech brand.
+          Red drives action (CTAs, prices), while dark backgrounds reduce eye strain
+          for extended browsing sessions.
+        </p>
+
+        <div class="palette" role="list" aria-label="Colour palette">
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background:#0d0d0d;"></div>
+            <div class="swatch-info"><strong>Primary</strong>#0d0d0d<br/>rgb(13,13,13)</div>
+          </div>
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background:#1a1a2e;"></div>
+            <div class="swatch-info"><strong>Secondary</strong>#1a1a2e<br/>rgb(26,26,46)</div>
+          </div>
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background:#16213e;"></div>
+            <div class="swatch-info"><strong>Card</strong>#16213e<br/>rgb(22,33,62)</div>
+          </div>
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background:#e94560;"></div>
+            <div class="swatch-info"><strong>Accent</strong>#e94560<br/>rgb(233,69,96)</div>
+          </div>
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background:#f5a623;"></div>
+            <div class="swatch-info"><strong>Gold</strong>#f5a623<br/>rgb(245,166,35)</div>
+          </div>
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background:#a8b2d8;"></div>
+            <div class="swatch-info"><strong>Text</strong>#a8b2d8<br/>rgb(168,178,216)</div>
+          </div>
+          <div class="swatch" role="listitem">
+            <div class="swatch-color" style="background:#e6f1ff; border:1px solid #1f3a5f;"></div>
+            <div class="swatch-info"><strong>Light</strong>#e6f1ff<br/>rgb(230,241,255)</div>
+          </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="card mt-2">
+          <h3>Typography</h3>
+          <table aria-label="Typography specifications">
+            <thead>
+              <tr><th>Property</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Font Family (Main)</td><td>'Segoe UI', Tahoma, Geneva, Verdana, sans-serif</td></tr>
+              <tr><td>Font Family (Mono)</td><td>'Courier New', Courier, monospace</td></tr>
+              <tr><td>Root Font Size</td><td>16px</td></tr>
+              <tr><td>Root Font Weight</td><td>400 (normal)</td></tr>
+              <tr><td>Heading Weight</td><td>700 (bold)</td></tr>
+              <tr><td>Line Height</td><td>1.7</td></tr>
+              <tr><td>h1 Size</td><td>clamp(1.8rem, 4vw, 3rem)</td></tr>
+              <tr><td>h2 Size</td><td>clamp(1.4rem, 3vw, 2rem)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Icons -->
+        <div class="card">
+          <h3>Icons &amp; Dimensions</h3>
+          <ul class="styled">
+            <li>Logo: Text-based (#logo), font-size 1.4rem, monospace, colour: #e94560</li>
+            <li>Product icons: Emoji, font-size 4rem, displayed in .product-img-wrap (min-height 180px)</li>
+            <li>Cart badge: 18Ã—18px circle, background #e94560, font-size 0.65rem</li>
+            <li>Feature icons: Emoji, font-size 2.5rem</li>
+            <li>Border radius (cards): 8px / 16px (--radius / --radius-lg)</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- IA#2 â€” JS Functions List -->
+    <section class="section" id="functions" aria-labelledby="fn-heading">
+      <div class="container">
+        <p class="section-label">JavaScript</p>
+        <h2 id="fn-heading">User-Defined Functions</h2>
+
+        <div style="overflow-x:auto;">
+          <table aria-label="JavaScript functions list">
+            <thead>
+              <tr>
+                <th>Function</th>
+                <th>Purpose</th>
+                <th>Creator</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>getCart()</td><td>Retrieves cart array from localStorage</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>saveCart(cart)</td><td>Persists cart to localStorage, updates badge</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>addToCart(id)</td><td>Adds product to cart or increments quantity</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>removeFromCart(id)</td><td>Removes a product from the cart</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>updateQty(id, delta)</td><td>Increments or decrements item quantity</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>clearCart()</td><td>Empties the entire cart</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>getCartTotal()</td><td>Calculates subtotal, discount, tax, total</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>getCartCount()</td><td>Returns total item count in cart</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>updateCartBadge()</td><td>Updates the cart count badge in nav</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>showToast(msg)</td><td>Displays a brief notification message</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>formatPrice(amount)</td><td>Formats number as JMD currency string</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>showError(id, msg)</td><td>Shows validation error under a form field</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>clearError(id)</td><td>Clears error state from a form field</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>validateEmail(email)</td><td>Validates email format using regex</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>validatePassword(pw)</td><td>Checks password meets minimum requirements</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>renderProducts(list)</td><td>Builds product cards into #product-grid</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>filterProducts()</td><td>Filters products by category and search term</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>renderCart()</td><td>Builds cart table rows and summary totals</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>renderCheckoutSummary()</td><td>Populates order summary on checkout page</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>validateCheckout()</td><td>Validates all shipping form fields</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>submitCheckout()</td><td>Triggers checkout validation and modal</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>confirmOrder()</td><td>Finalises order, clears cart, shows success</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>cancelCheckout()</td><td>Closes the confirmation modal</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>handleLogin(e)</td><td>Validates and processes login form</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>handleRegister(e)</td><td>Validates and processes registration form</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>updateStrengthBar(pw)</td><td>Visually shows password strength</td><td>Karlyle Ambursley</td></tr>
+              <tr><td>highlightActiveNav()</td><td>Marks current page link as active in nav</td><td>Karlyle Ambursley</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- IA#2 â€” GitHub & Hosting Links -->
+    <section class="section" id="links" aria-labelledby="links-heading">
+      <div class="container">
+        <p class="section-label">Resources</p>
+        <h2 id="links-heading">Repository &amp; Hosting</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>GitHub Repository</h3>
+            <p>Source code, images, and storyboard PDF.</p>
+            <a href="https://github.com/Karlyle101/IA_2" target="_blank" rel="noopener" class="btn">
+              View on GitHub
+            </a>
+          </div>
+          <div class="card">
+            <h3>Live Hosted Site</h3>
+            <p>Free hosting via Netlify or GitHub Pages.</p>
+            <a href="https://karlyle101.github.io/IA_2/" target="_blank" rel="noopener" class="btn">
+              Visit Live Site
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IA#2 â€” APA References -->
+    <section class="section" id="references" aria-labelledby="ref-heading">
+      <div class="container">
+        <p class="section-label">Bibliography</p>
+        <h2 id="ref-heading">APA References</h2>
+        <div class="card">
+          <ol class="styled">
+            <li>
+              MDN Web Docs. (2025). <em>HTML: HyperText Markup Language.</em> Mozilla.
+              <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener">
+                https://developer.mozilla.org/en-US/docs/Web/HTML
+              </a>
+            </li>
+            <li>
+              MDN Web Docs. (2025). <em>CSS: Cascading Style Sheets.</em> Mozilla.
+              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener">
+                https://developer.mozilla.org/en-US/docs/Web/CSS
+              </a>
+            </li>
+            <li>
+              MDN Web Docs. (2025). <em>JavaScript reference.</em> Mozilla.
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">
+                https://developer.mozilla.org/en-US/docs/Web/JavaScript
+              </a>
+            </li>
+            <li>
+              W3C. (2024). <em>HTML5 specification.</em>
+              <a href="https://www.w3.org/TR/html52/" target="_blank" rel="noopener">
+                https://www.w3.org/TR/html52/
+              </a>
+            </li>
+            <li>
+              freeCodeCamp. (2023). <em>Responsive web design certification.</em>
+              <a href="https://www.freecodecamp.org" target="_blank" rel="noopener">
+                https://www.freecodecamp.org
+              </a>
+            </li>
+            <li>
+              Crestodina, A. (2023). <em>The psychology of color in web design.</em> Orbit Media Studios.
+              <a href="https://www.orbitmedia.com/blog/psychology-of-color/" target="_blank" rel="noopener">
+                https://www.orbitmedia.com/blog/psychology-of-color/
+              </a>
+            </li>
+            <li>
+              Google. (2025). <em>Web fundamentals: Responsive web design basics.</em>
+              <a href="https://web.dev/responsive-web-design-basics/" target="_blank" rel="noopener">
+                https://web.dev/responsive-web-design-basics/
+              </a>
+            </li>
+            <li>
+              Nielsen, J. (2020). <em>10 usability heuristics for user interface design.</em> Nielsen Norman Group.
+              <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noopener">
+                https://www.nngroup.com/articles/ten-usability-heuristics/
+              </a>
+            </li>
+            <li>
+              Shopify. (2025). <em>E-commerce website design guide.</em>
+              <a href="https://www.shopify.com/blog/ecommerce-website-design" target="_blank" rel="noopener">
+                https://www.shopify.com/blog/ecommerce-website-design
+              </a>
+            </li>
+            <li>
+              YouTube. (2024). <em>The psychology of color in web design and marketing</em> [Video].
+              <a href="https://www.youtube.com/watch?v=8J0nbuunDXc" target="_blank" rel="noopener">
+                https://www.youtube.com/watch?v=8J0nbuunDXc
+              </a>
+            </li>
+          </ol>
+        </div>
+        <p class="mt-1"><a href="#sb-heading">â†‘ Back to top</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2026 <span class="accent">TechNest</span> &mdash;
+        <a href="mailto:karlylesambursley@students.utech.edu.jm">karlylesambursley@students.utech.edu.jm</a> |
+        <a href="tel:+18764857305">(876) 4857305</a>
+      </p>
+      <p>Designed &amp; Built by Karlyle Ambursley &bull; 2111685 &bull; CIT2011 Web Programming</p>
+    </div>
+  </footer>
+
+  <!-- IA#2 â€” External JS -->
+  <script src="./script.js"></script>
+
+</body>
+</html>
+

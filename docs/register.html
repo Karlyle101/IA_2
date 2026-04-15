@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TechNest â€“ Create a new account" />
+  <title>Register | TechNest</title>
+  <!-- IA#2 â€” External stylesheet -->
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- IA#2 â€” Navigation -->
+  <nav aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" id="logo">TechNest ðŸ›’</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html" class="active">Register</a></li>
+        <li>
+          <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+            ðŸ›’ Cart
+            <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section flex-center" style="min-height:80vh; padding:3rem 0;" aria-labelledby="reg-heading">
+      <div style="width:100%; max-width:520px;">
+
+        <div class="card">
+          <p class="section-label text-center">Join TechNest</p>
+          <h1 id="reg-heading" class="text-center" style="font-size:1.8rem; margin-bottom:1.5rem;">
+            Create Account
+          </h1>
+
+          <!-- IA#2 â€” Alert message -->
+          <div class="alert" id="reg-alert" role="alert"></div>
+
+          <!-- IA#2 â€” Registration form with full validation -->
+          <form id="reg-form" novalidate aria-label="Registration form" onsubmit="handleRegister(event)">
+
+            <div class="form-group">
+              <label for="reg-name">Full Name *</label>
+              <input
+                type="text"
+                id="reg-name"
+                placeholder="e.g. Karlyle Ambursley"
+                autocomplete="name"
+                required
+                aria-required="true"
+              />
+              <p class="field-error" id="reg-name-err" role="alert"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-dob">Date of Birth *</label>
+              <input
+                type="date"
+                id="reg-dob"
+                required
+                aria-required="true"
+                aria-label="Date of birth"
+              />
+              <p class="field-error" id="reg-dob-err" role="alert"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-email">Email Address *</label>
+              <input
+                type="email"
+                id="reg-email"
+                placeholder="e.g. user@example.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+              />
+              <p class="field-error" id="reg-email-err" role="alert"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-username">Username *</label>
+              <input
+                type="text"
+                id="reg-username"
+                placeholder="Choose a unique username"
+                autocomplete="username"
+                required
+                aria-required="true"
+              />
+              <p class="field-error" id="reg-username-err" role="alert"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-password">Password * <small style="color:var(--clr-text);">(min 8 chars, 1 number)</small></label>
+              <input
+                type="password"
+                id="reg-password"
+                placeholder="Create a strong password"
+                autocomplete="new-password"
+                required
+                aria-required="true"
+              />
+              <!-- IA#2 â€” Password strength bar (DOM updated via JS) -->
+              <div class="strength-bar" aria-hidden="true">
+                <div class="strength-fill" id="strength-fill"></div>
+              </div>
+              <p class="field-error" id="reg-password-err" role="alert"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-confirm">Confirm Password *</label>
+              <input
+                type="password"
+                id="reg-confirm"
+                placeholder="Re-enter your password"
+                autocomplete="new-password"
+                required
+                aria-required="true"
+              />
+              <p class="field-error" id="reg-confirm-err" role="alert"></p>
+            </div>
+
+            <!-- IA#2 â€” Terms checkbox -->
+            <div style="display:flex; align-items:flex-start; gap:0.5rem; margin-bottom:1.2rem;">
+              <input type="checkbox" id="reg-terms" style="width:auto; margin-top:4px;" required />
+              <label for="reg-terms" style="margin-bottom:0; font-size:0.88rem; color:var(--clr-text);">
+                I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a>
+              </label>
+            </div>
+            <p class="field-error" id="reg-terms-err" role="alert"></p>
+
+            <button type="submit" class="btn btn-solid" style="width:100%;" aria-label="Create account">
+              Create Account
+            </button>
+
+          </form>
+
+          <p class="text-center mt-1" style="font-size:0.9rem;">
+            Already have an account? <a href="login.html">Sign in</a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2026 <span class="accent">TechNest</span> &mdash;
+        <a href="mailto:karlylesambursley@students.utech.edu.jm">karlylesambursley@students.utech.edu.jm</a> |
+        <a href="tel:+18764857305">(876) 4857305</a>
+      </p>
+      <p>Designed &amp; Built by Karlyle Ambursley &bull; 2111685 &bull; CIT2011 Web Programming</p>
+    </div>
+  </footer>
+
+  <!-- IA#2 â€” External JS -->
+  <script src="./script.js"></script>
+  <script>
+    /* IA#2 â€” Event listener: form submit â†’ handleRegister */
+    document.getElementById("reg-form").addEventListener("submit", handleRegister);
+
+    /* IA#2 â€” Event listener: password input â†’ strength bar */
+    document.getElementById("reg-password").addEventListener("input", function () {
+      updateStrengthBar(this.value);
+      clearError("reg-password");
+    });
+
+    /* IA#2 â€” Event listeners: clear errors on input */
+    ["reg-name","reg-dob","reg-email","reg-username","reg-confirm"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("input", () => clearError(id));
+    });
+
+    /* IA#2 â€” Terms checkbox validation */
+    document.getElementById("reg-form").addEventListener("submit", function (e) {
+      const terms = document.getElementById("reg-terms");
+      if (!terms.checked) {
+        e.preventDefault();
+        showError("reg-terms", "You must agree to the terms.");
+      }
+    }, true); /* capture phase so it runs before handleRegister */
+  </script>
+
+</body>
+</html>
+

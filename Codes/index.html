@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TechNest – Premium Tech Accessories Online Store" />
+  <title>TechNest | Home</title>
+  <!-- IA#2 — External stylesheet linked -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- IA#2 — Navigation (element + class + id selectors) -->
+  <nav aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" id="logo">TechNest 🛒</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li>
+          <a href="cart.html" class="cart-link" aria-label="Shopping cart">
+            🛒 Cart
+            <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- IA#2 — Hero Section (Flexbox layout) -->
+    <section class="hero" id="home" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-layout">
+          <div class="hero-content">
+            <p class="hero-tag">// Your one-stop tech shop</p>
+            <h1 id="hero-heading">Premium Tech,<br/><span class="accent">Delivered Fast.</span></h1>
+            <p>
+              TechNest brings you the latest in tech accessories — from wireless audio
+              to high-speed storage — at prices that make sense. Quality gear, zero compromise.
+            </p>
+            <div class="hero-cta">
+              <a href="products.html" class="btn btn-solid">Shop Now</a>
+              <a href="about.html" class="btn">Learn More</a>
+            </div>
+          </div>
+          <!-- IA#2 — Hero visual (decorative) -->
+          <div class="hero-visual" aria-hidden="true">🖥️</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IA#2 — Features Section (CSS Grid) -->
+    <section class="section" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <p class="section-label">Why TechNest?</p>
+        <h2 id="features-heading">Built for Tech Lovers</h2>
+        <div class="grid-3">
+
+          <article class="card text-center">
+            <div class="feature-icon" aria-hidden="true">🚀</div>
+            <h3>Fast Delivery</h3>
+            <p>Island-wide delivery within 2–3 business days. Free shipping on orders over J$10,000.</p>
+          </article>
+
+          <article class="card text-center">
+            <div class="feature-icon" aria-hidden="true">🔒</div>
+            <h3>Secure Checkout</h3>
+            <p>Your data is safe with us. Encrypted transactions and secure payment processing.</p>
+          </article>
+
+          <article class="card text-center">
+            <div class="feature-icon" aria-hidden="true">🔄</div>
+            <h3>Easy Returns</h3>
+            <p>Not satisfied? Return within 14 days for a full refund — no questions asked.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- IA#2 — Featured Products (dynamic via JS) -->
+    <section class="section" id="featured" aria-labelledby="featured-heading">
+      <div class="container">
+        <p class="section-label">Top Picks</p>
+        <h2 id="featured-heading">Featured Products</h2>
+        <!-- IA#2 — DOM target: JS renders product cards here -->
+        <div class="grid-4" id="featured-grid"></div>
+        <div class="text-center mt-2">
+          <a href="products.html" class="btn">View All Products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- IA#2 — Promo Banner -->
+    <section class="section" id="promo" style="background:var(--clr-secondary);">
+      <div class="container text-center">
+        <p class="section-label">Limited Time</p>
+        <h2>Get <span class="accent">10% Off</span> Orders Over J$10,000</h2>
+        <p>Discount applied automatically at checkout. No code needed.</p>
+        <a href="products.html" class="btn btn-gold mt-1">Grab the Deal</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        &copy; 2026 <span class="accent">TechNest</span> &mdash;
+        Questions? <a href="mailto:karlylesambursley@students.utech.edu.jm">karlylesambursley@students.utech.edu.jm</a> |
+        <a href="tel:+18764857305">(876) 4857305</a>
+      </p>
+      <p>Designed &amp; Built by Karlyle Ambursley &bull; 2111685 &bull; CIT2011 Web Programming</p>
+    </div>
+  </footer>
+
+  <!-- IA#2 — External JS linked -->
+  <script src="../script.js"></script>
+  <script>
+    /* IA#2 — Render 4 featured products on home page */
+    (function renderFeatured() {
+      const grid = document.getElementById("featured-grid");
+      if (!grid) return;
+      /* IA#2 — Control structure: slice first 4 products */
+      const featured = PRODUCTS.slice(0, 4);
+      grid.innerHTML = featured.map(p => `
+        <article class="product-card" aria-label="${p.name}">
+          <div class="product-img-wrap">
+            <img src="${p.image}" alt="${p.name}" class="product-img" />
+          </div>
+          <div class="product-info">
+            <span class="section-label">${p.category}</span>
+            <p class="product-name">${p.name}</p>
+            <p class="product-price">${formatPrice(p.price)}</p>
+            <div class="product-actions">
+              <button class="btn btn-solid btn-sm" onclick="addToCart(${p.id})" aria-label="Add ${p.name} to cart">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    })();
+  </script>
+
+</body>
+</html>
