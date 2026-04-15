@@ -1,19 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TechNest â€“ Browse all tech products" />
+  <meta name="description" content="TechNest – Browse all tech products" />
   <title>Products | TechNest</title>
-  <!-- IA#2 â€” External stylesheet -->
+  <!-- IA#2 — External stylesheet -->
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
 
-  <!-- IA#2 â€” Navigation -->
+  <!-- IA#2 — Navigation -->
   <nav aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="index.html" id="logo">TechNest ðŸ›’</a>
+      <a href="index.html" id="logo">TechNest 🛒</a>
       <ul class="nav-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="products.html" class="active">Products</a></li>
@@ -22,7 +22,7 @@
         <li><a href="register.html">Register</a></li>
         <li>
           <a href="cart.html" class="cart-link" aria-label="Shopping cart">
-            ðŸ›’ Cart
+            🛒 Cart
             <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
           </a>
         </li>
@@ -36,7 +36,7 @@
         <p class="section-label">Shop</p>
         <h1 id="products-heading">All Products</h1>
 
-        <!-- IA#2 â€” Filter controls (event listeners attached in JS) -->
+        <!-- IA#2 — Filter controls (event listeners attached in JS) -->
         <div class="flex-row mb-1" style="margin-top:1.5rem;" role="search">
 
           <div class="form-group" style="flex:1; min-width:200px; margin-bottom:0;">
@@ -44,7 +44,7 @@
             <input
               type="search"
               id="search-input"
-              placeholder="e.g. keyboard, earbudsâ€¦"
+              placeholder="e.g. keyboard, earbuds…"
               aria-label="Search products"
               oninput="filterProducts()"
             />
@@ -63,7 +63,7 @@
 
         </div>
 
-        <!-- IA#2 â€” DOM target: renderProducts() writes here -->
+        <!-- IA#2 — DOM target: renderProducts() writes here -->
         <div class="grid-3 mt-2" id="product-grid" aria-live="polite"></div>
 
       </div>
@@ -81,19 +81,18 @@
     </div>
   </footer>
 
-  <!-- IA#2 â€” External JS -->
+  <!-- IA#2 — External JS -->
   <script src="./script.js"></script>
   <script>
-    /* IA#2 â€” Initial render of all products on page load */
+    /* IA#2 — Initial render of all products on page load */
     renderProducts(PRODUCTS);
 
-    /* IA#2 â€” Event listener: search input live filter */
+    /* IA#2 — Event listener: search input live filter */
     document.getElementById("search-input").addEventListener("input", filterProducts);
 
-    /* IA#2 â€” Event listener: category dropdown filter */
+    /* IA#2 — Event listener: category dropdown filter */
     document.getElementById("cat-filter").addEventListener("change", filterProducts);
   </script>
 
 </body>
 </html>
-

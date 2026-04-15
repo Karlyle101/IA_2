@@ -1,19 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TechNest â€“ Create a new account" />
+  <meta name="description" content="TechNest – Create a new account" />
   <title>Register | TechNest</title>
-  <!-- IA#2 â€” External stylesheet -->
+  <!-- IA#2 — External stylesheet -->
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
 
-  <!-- IA#2 â€” Navigation -->
+  <!-- IA#2 — Navigation -->
   <nav aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="index.html" id="logo">TechNest ðŸ›’</a>
+      <a href="index.html" id="logo">TechNest 🛒</a>
       <ul class="nav-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="products.html">Products</a></li>
@@ -22,7 +22,7 @@
         <li><a href="register.html" class="active">Register</a></li>
         <li>
           <a href="cart.html" class="cart-link" aria-label="Shopping cart">
-            ðŸ›’ Cart
+            🛒 Cart
             <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
           </a>
         </li>
@@ -40,10 +40,10 @@
             Create Account
           </h1>
 
-          <!-- IA#2 â€” Alert message -->
+          <!-- IA#2 — Alert message -->
           <div class="alert" id="reg-alert" role="alert"></div>
 
-          <!-- IA#2 â€” Registration form with full validation -->
+          <!-- IA#2 — Registration form with full validation -->
           <form id="reg-form" novalidate aria-label="Registration form" onsubmit="handleRegister(event)">
 
             <div class="form-group">
@@ -107,7 +107,7 @@
                 required
                 aria-required="true"
               />
-              <!-- IA#2 â€” Password strength bar (DOM updated via JS) -->
+              <!-- IA#2 — Password strength bar (DOM updated via JS) -->
               <div class="strength-bar" aria-hidden="true">
                 <div class="strength-fill" id="strength-fill"></div>
               </div>
@@ -127,7 +127,7 @@
               <p class="field-error" id="reg-confirm-err" role="alert"></p>
             </div>
 
-            <!-- IA#2 â€” Terms checkbox -->
+            <!-- IA#2 — Terms checkbox -->
             <div style="display:flex; align-items:flex-start; gap:0.5rem; margin-bottom:1.2rem;">
               <input type="checkbox" id="reg-terms" style="width:auto; margin-top:4px;" required />
               <label for="reg-terms" style="margin-bottom:0; font-size:0.88rem; color:var(--clr-text);">
@@ -162,25 +162,25 @@
     </div>
   </footer>
 
-  <!-- IA#2 â€” External JS -->
+  <!-- IA#2 — External JS -->
   <script src="./script.js"></script>
   <script>
-    /* IA#2 â€” Event listener: form submit â†’ handleRegister */
+    /* IA#2 — Event listener: form submit → handleRegister */
     document.getElementById("reg-form").addEventListener("submit", handleRegister);
 
-    /* IA#2 â€” Event listener: password input â†’ strength bar */
+    /* IA#2 — Event listener: password input → strength bar */
     document.getElementById("reg-password").addEventListener("input", function () {
       updateStrengthBar(this.value);
       clearError("reg-password");
     });
 
-    /* IA#2 â€” Event listeners: clear errors on input */
+    /* IA#2 — Event listeners: clear errors on input */
     ["reg-name","reg-dob","reg-email","reg-username","reg-confirm"].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.addEventListener("input", () => clearError(id));
     });
 
-    /* IA#2 â€” Terms checkbox validation */
+    /* IA#2 — Terms checkbox validation */
     document.getElementById("reg-form").addEventListener("submit", function (e) {
       const terms = document.getElementById("reg-terms");
       if (!terms.checked) {
@@ -192,4 +192,3 @@
 
 </body>
 </html>
-

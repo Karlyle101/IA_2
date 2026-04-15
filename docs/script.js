@@ -1,40 +1,40 @@
-﻿/* =============================================
+/* =============================================
    TechNest E-Commerce | Karlyle Ambursley
    Student ID: 2111685 | CIT2011 | IA#2
-   script.js â€” External JavaScript (linked to all pages)
+   script.js — External JavaScript (linked to all pages)
    ============================================= */
 
 /* =============================================
-   IA#2 â€” PRODUCT DATA (shared across pages)
+   IA#2 — PRODUCT DATA (shared across pages)
    ============================================= */
 const PRODUCTS = [
-  { id: 1, name: "Wireless Earbuds Pro",   price: 4999, emoji: "ðŸŽ§", image: "./earbuds.jfif",      category: "Audio",       desc: "True wireless, 30hr battery, noise cancellation." },
-  { id: 2, name: "Mechanical Keyboard",    price: 7500, emoji: "âŒ¨ï¸", image: "./keyboard.jpg",     category: "Peripherals", desc: "RGB backlit, tactile switches, compact TKL layout." },
-  { id: 3, name: "USB-C Hub 7-in-1",       price: 3200, emoji: "ðŸ”Œ", image: "./usb-hub.jpg",      category: "Accessories", desc: "HDMI 4K, 3Ã—USB-A, SD card, 100W PD charging." },
-  { id: 4, name: "Portable SSD 1TB",       price: 8900, emoji: "ðŸ’¾", image: "./SSD.jpg",          category: "Storage",     desc: "540MB/s read, USB 3.2, shock-resistant casing." },
-  { id: 5, name: "Webcam 1080p HD",        price: 5500, emoji: "ðŸ“·", image: "./WEBCAM.jfif",      category: "Peripherals", desc: "Auto-focus, built-in mic, plug-and-play USB." },
-  { id: 6, name: "Smart LED Desk Lamp",    price: 2800, emoji: "ðŸ’¡", image: "./DESK-lamp.jpg",    category: "Accessories", desc: "Touch dimmer, USB charging port, 5 colour temps." },
-  { id: 7, name: "Gaming Mouse 16000 DPI", price: 4200, emoji: "ðŸ–±ï¸", image: "./mouse.jfif",       category: "Peripherals", desc: "Programmable buttons, RGB, ergonomic design." },
-  { id: 8, name: "Phone Stand Adjustable", price: 1500, emoji: "ðŸ“±", image: "./phone stand.jfif", category: "Accessories", desc: "Aluminium, 360Â° rotation, fits all phone sizes." }
+  { id: 1, name: "Wireless Earbuds Pro",   price: 4999, emoji: "🎧", image: "./earbuds.jfif",      category: "Audio",       desc: "True wireless, 30hr battery, noise cancellation." },
+  { id: 2, name: "Mechanical Keyboard",    price: 7500, emoji: "⌨️", image: "./keyboard.jpg",     category: "Peripherals", desc: "RGB backlit, tactile switches, compact TKL layout." },
+  { id: 3, name: "USB-C Hub 7-in-1",       price: 3200, emoji: "🔌", image: "./usb-hub.jpg",      category: "Accessories", desc: "HDMI 4K, 3×USB-A, SD card, 100W PD charging." },
+  { id: 4, name: "Portable SSD 1TB",       price: 8900, emoji: "💾", image: "./SSD.jpg",          category: "Storage",     desc: "540MB/s read, USB 3.2, shock-resistant casing." },
+  { id: 5, name: "Webcam 1080p HD",        price: 5500, emoji: "📷", image: "./WEBCAM.jfif",      category: "Peripherals", desc: "Auto-focus, built-in mic, plug-and-play USB." },
+  { id: 6, name: "Smart LED Desk Lamp",    price: 2800, emoji: "💡", image: "./DESK-lamp.jpg",    category: "Accessories", desc: "Touch dimmer, USB charging port, 5 colour temps." },
+  { id: 7, name: "Gaming Mouse 16000 DPI", price: 4200, emoji: "🖱️", image: "./mouse.jfif",       category: "Peripherals", desc: "Programmable buttons, RGB, ergonomic design." },
+  { id: 8, name: "Phone Stand Adjustable", price: 1500, emoji: "📱", image: "./phone stand.jfif", category: "Accessories", desc: "Aluminium, 360° rotation, fits all phone sizes." }
 ];
 
 /* =============================================
-   IA#2 â€” CART UTILITIES
+   IA#2 — CART UTILITIES
    Functions: getCart, saveCart, addToCart, removeFromCart, updateQty, clearCart
    Creator: Karlyle Ambursley
    ============================================= */
 
 /**
- * getCart â€” retrieves cart array from localStorage
+ * getCart — retrieves cart array from localStorage
  * @returns {Array} cart items
  */
 function getCart() {
-  /* IA#2 â€” DOM/Storage: read cart from localStorage */
+  /* IA#2 — DOM/Storage: read cart from localStorage */
   return JSON.parse(localStorage.getItem("tn_cart") || "[]");
 }
 
 /**
- * saveCart â€” persists cart array to localStorage
+ * saveCart — persists cart array to localStorage
  * @param {Array} cart
  */
 function saveCart(cart) {
@@ -43,11 +43,11 @@ function saveCart(cart) {
 }
 
 /**
- * addToCart â€” adds a product to the cart or increments qty
+ * addToCart — adds a product to the cart or increments qty
  * @param {number} productId
  */
 function addToCart(productId) {
-  /* IA#2 â€” Control structure: find existing item */
+  /* IA#2 — Control structure: find existing item */
   const cart = getCart();
   const existing = cart.find(item => item.id === productId);
   if (existing) {
@@ -61,7 +61,7 @@ function addToCart(productId) {
 }
 
 /**
- * removeFromCart â€” removes an item from the cart by id
+ * removeFromCart — removes an item from the cart by id
  * @param {number} productId
  */
 function removeFromCart(productId) {
@@ -70,16 +70,16 @@ function removeFromCart(productId) {
 }
 
 /**
- * updateQty â€” updates quantity of a cart item
+ * updateQty — updates quantity of a cart item
  * @param {number} productId
- * @param {number} delta â€” +1 or -1
+ * @param {number} delta — +1 or -1
  */
 function updateQty(productId, delta) {
   const cart = getCart();
   const item = cart.find(i => i.id === productId);
   if (!item) return;
   item.qty += delta;
-  /* IA#2 â€” Control structure: remove if qty drops to 0 */
+  /* IA#2 — Control structure: remove if qty drops to 0 */
   if (item.qty <= 0) {
     removeFromCart(productId);
     return;
@@ -88,18 +88,18 @@ function updateQty(productId, delta) {
 }
 
 /**
- * clearCart â€” empties the entire cart
+ * clearCart — empties the entire cart
  */
 function clearCart() {
   saveCart([]);
 }
 
 /**
- * getCartTotal â€” calculates subtotal, discount, tax, total
+ * getCartTotal — calculates subtotal, discount, tax, total
  * @returns {Object} { subtotal, discount, tax, total }
  */
 function getCartTotal() {
-  /* IA#2 â€” Arithmetic calculations */
+  /* IA#2 — Arithmetic calculations */
   const cart = getCart();
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
   const discount = subtotal >= 10000 ? Math.round(subtotal * 0.1) : 0; /* 10% off orders over $10,000 */
@@ -110,7 +110,7 @@ function getCartTotal() {
 }
 
 /**
- * getCartCount â€” returns total number of items in cart
+ * getCartCount — returns total number of items in cart
  * @returns {number}
  */
 function getCartCount() {
@@ -118,15 +118,15 @@ function getCartCount() {
 }
 
 /* =============================================
-   IA#2 â€” UI UTILITIES
+   IA#2 — UI UTILITIES
    ============================================= */
 
 /**
- * updateCartBadge â€” updates the cart count badge in nav
+ * updateCartBadge — updates the cart count badge in nav
  * Creator: Karlyle Ambursley
  */
 function updateCartBadge() {
-  /* IA#2 â€” DOM Manipulation: getElementById */
+  /* IA#2 — DOM Manipulation: getElementById */
   const badge = document.getElementById("cart-badge");
   if (!badge) return;
   const count = getCartCount();
@@ -135,12 +135,12 @@ function updateCartBadge() {
 }
 
 /**
- * showToast â€” displays a brief notification message
+ * showToast — displays a brief notification message
  * @param {string} msg
  * Creator: Karlyle Ambursley
  */
 function showToast(msg) {
-  /* IA#2 â€” DOM Manipulation: createElement, appendChild */
+  /* IA#2 — DOM Manipulation: createElement, appendChild */
   let toast = document.getElementById("tn-toast");
   if (!toast) {
     toast = document.createElement("div");
@@ -156,12 +156,12 @@ function showToast(msg) {
   }
   toast.textContent = msg;
   toast.style.opacity = "1";
-  /* IA#2 â€” setTimeout: auto-hide toast */
+  /* IA#2 — setTimeout: auto-hide toast */
   setTimeout(() => { toast.style.opacity = "0"; }, 2500);
 }
 
 /**
- * formatPrice â€” formats a number as JMD currency string
+ * formatPrice — formats a number as JMD currency string
  * @param {number} amount
  * @returns {string}
  */
@@ -170,17 +170,17 @@ function formatPrice(amount) {
 }
 
 /* =============================================
-   IA#2 â€” FORM VALIDATION UTILITIES
+   IA#2 — FORM VALIDATION UTILITIES
    Creator: Karlyle Ambursley
    ============================================= */
 
 /**
- * showError â€” displays an error message under a field
+ * showError — displays an error message under a field
  * @param {string} fieldId
  * @param {string} msg
  */
 function showError(fieldId, msg) {
-  /* IA#2 â€” DOM Manipulation: querySelector, classList */
+  /* IA#2 — DOM Manipulation: querySelector, classList */
   const field = document.getElementById(fieldId);
   const errEl = document.getElementById(fieldId + "-err");
   if (field)  field.classList.add("error");
@@ -188,7 +188,7 @@ function showError(fieldId, msg) {
 }
 
 /**
- * clearError â€” clears error state from a field
+ * clearError — clears error state from a field
  * @param {string} fieldId
  */
 function clearError(fieldId) {
@@ -199,17 +199,17 @@ function clearError(fieldId) {
 }
 
 /**
- * validateEmail â€” checks if a string is a valid email
+ * validateEmail — checks if a string is a valid email
  * @param {string} email
  * @returns {boolean}
  */
 function validateEmail(email) {
-  /* IA#2 â€” Regex validation */
+  /* IA#2 — Regex validation */
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 /**
- * validatePassword â€” checks password strength (min 8 chars, 1 number)
+ * validatePassword — checks password strength (min 8 chars, 1 number)
  * @param {string} pw
  * @returns {boolean}
  */
@@ -218,20 +218,20 @@ function validatePassword(pw) {
 }
 
 /* =============================================
-   IA#2 â€” PAGE INIT: runs on every page load
+   IA#2 — PAGE INIT: runs on every page load
    ============================================= */
 document.addEventListener("DOMContentLoaded", function () {
-  /* IA#2 â€” Event listener: DOMContentLoaded */
+  /* IA#2 — Event listener: DOMContentLoaded */
   updateCartBadge();
   highlightActiveNav();
 });
 
 /**
- * highlightActiveNav â€” marks the current page link as active
+ * highlightActiveNav — marks the current page link as active
  * Creator: Karlyle Ambursley
  */
 function highlightActiveNav() {
-  /* IA#2 â€” DOM Manipulation: querySelectorAll, classList */
+  /* IA#2 — DOM Manipulation: querySelectorAll, classList */
   const links = document.querySelectorAll(".nav-links a");
   const current = window.location.pathname.split("/").pop();
   links.forEach(link => {
@@ -241,16 +241,16 @@ function highlightActiveNav() {
 }
 
 /* =============================================
-   IA#2 â€” PRODUCTS PAGE
+   IA#2 — PRODUCTS PAGE
    ============================================= */
 
 /**
- * renderProducts â€” builds product cards into #product-grid
- * @param {Array} list â€” array of product objects to render
+ * renderProducts — builds product cards into #product-grid
+ * @param {Array} list — array of product objects to render
  * Creator: Karlyle Ambursley
  */
 function renderProducts(list) {
-  /* IA#2 â€” DOM Manipulation: getElementById, innerHTML */
+  /* IA#2 — DOM Manipulation: getElementById, innerHTML */
   const grid = document.getElementById("product-grid");
   if (!grid) return;
 
@@ -280,11 +280,11 @@ function renderProducts(list) {
 }
 
 /**
- * filterProducts â€” filters products by category or search term
+ * filterProducts — filters products by category or search term
  * Creator: Karlyle Ambursley
  */
 function filterProducts() {
-  /* IA#2 â€” DOM Manipulation + control structures */
+  /* IA#2 — DOM Manipulation + control structures */
   const search   = (document.getElementById("search-input")?.value || "").toLowerCase();
   const category = document.getElementById("cat-filter")?.value || "all";
 
@@ -298,15 +298,15 @@ function filterProducts() {
 }
 
 /* =============================================
-   IA#2 â€” CART PAGE
+   IA#2 — CART PAGE
    ============================================= */
 
 /**
- * renderCart â€” builds the cart table and summary
+ * renderCart — builds the cart table and summary
  * Creator: Karlyle Ambursley
  */
 function renderCart() {
-  /* IA#2 â€” DOM Manipulation: getElementById, innerHTML */
+  /* IA#2 — DOM Manipulation: getElementById, innerHTML */
   const tbody   = document.getElementById("cart-tbody");
   const summary = document.getElementById("cart-summary");
   const emptyEl = document.getElementById("cart-empty");
@@ -315,7 +315,7 @@ function renderCart() {
 
   const cart = getCart();
 
-  /* IA#2 â€” Control structure: show empty state */
+  /* IA#2 — Control structure: show empty state */
   if (cart.length === 0) {
     if (emptyEl)  emptyEl.style.display = "block";
     if (tableEl)  tableEl.style.display = "none";
@@ -327,14 +327,14 @@ function renderCart() {
   if (tableEl)  tableEl.style.display = "block";
   if (summary)  summary.style.display = "block";
 
-  /* IA#2 â€” Arithmetic: subtotal per row */
+  /* IA#2 — Arithmetic: subtotal per row */
   tbody.innerHTML = cart.map(item => `
     <tr>
       <td>${item.emoji} ${item.name}</td>
       <td>${formatPrice(item.price)}</td>
       <td>
         <div class="qty-control">
-          <button class="qty-btn" onclick="changeQty(${item.id}, -1)" aria-label="Decrease quantity">âˆ’</button>
+          <button class="qty-btn" onclick="changeQty(${item.id}, -1)" aria-label="Decrease quantity">−</button>
           <span class="qty-display">${item.qty}</span>
           <button class="qty-btn" onclick="changeQty(${item.id}, 1)" aria-label="Increase quantity">+</button>
         </div>
@@ -344,7 +344,7 @@ function renderCart() {
     </tr>
   `).join("");
 
-  /* IA#2 â€” Arithmetic: totals */
+  /* IA#2 — Arithmetic: totals */
   const { subtotal, discount, tax, total } = getCartTotal();
   document.getElementById("sum-subtotal").textContent = formatPrice(subtotal);
   document.getElementById("sum-discount").textContent = discount > 0 ? `-${formatPrice(discount)}` : formatPrice(0);
@@ -353,7 +353,7 @@ function renderCart() {
 }
 
 /**
- * changeQty â€” wrapper called from cart table buttons
+ * changeQty — wrapper called from cart table buttons
  * @param {number} id
  * @param {number} delta
  */
@@ -363,7 +363,7 @@ function changeQty(id, delta) {
 }
 
 /**
- * removeItem â€” wrapper called from cart table remove button
+ * removeItem — wrapper called from cart table remove button
  * @param {number} id
  */
 function removeItem(id) {
@@ -372,7 +372,7 @@ function removeItem(id) {
 }
 
 /**
- * clearAllCart â€” clears cart and re-renders
+ * clearAllCart — clears cart and re-renders
  */
 function clearAllCart() {
   clearCart();
@@ -381,11 +381,11 @@ function clearAllCart() {
 }
 
 /* =============================================
-   IA#2 â€” CHECKOUT PAGE
+   IA#2 — CHECKOUT PAGE
    ============================================= */
 
 /**
- * renderCheckoutSummary â€” populates order summary on checkout page
+ * renderCheckoutSummary — populates order summary on checkout page
  * Creator: Karlyle Ambursley
  */
 function renderCheckoutSummary() {
@@ -400,7 +400,7 @@ function renderCheckoutSummary() {
 
   list.innerHTML = cart.map(item => `
     <div class="summary-row">
-      <span>${item.emoji} ${item.name} Ã— ${item.qty}</span>
+      <span>${item.emoji} ${item.name} × ${item.qty}</span>
       <span>${formatPrice(item.price * item.qty)}</span>
     </div>
   `).join("");
@@ -415,12 +415,12 @@ function renderCheckoutSummary() {
 }
 
 /**
- * validateCheckout â€” validates the checkout shipping form
+ * validateCheckout — validates the checkout shipping form
  * @returns {boolean}
  * Creator: Karlyle Ambursley
  */
 function validateCheckout() {
-  /* IA#2 â€” Form validation */
+  /* IA#2 — Form validation */
   let valid = true;
   const fields = ["co-name", "co-address", "co-city", "co-phone"];
   fields.forEach(id => {
@@ -432,11 +432,11 @@ function validateCheckout() {
 }
 
 /**
- * submitCheckout â€” handles checkout form submission
+ * submitCheckout — handles checkout form submission
  * Creator: Karlyle Ambursley
  */
 function submitCheckout() {
-  /* IA#2 â€” Event handler for checkout confirm */
+  /* IA#2 — Event handler for checkout confirm */
   if (!validateCheckout()) return;
   const cart = getCart();
   if (cart.length === 0) { showToast("Your cart is empty!"); return; }
@@ -447,7 +447,7 @@ function submitCheckout() {
 }
 
 /**
- * confirmOrder â€” finalises the order
+ * confirmOrder — finalises the order
  */
 function confirmOrder() {
   clearCart();
@@ -461,7 +461,7 @@ function confirmOrder() {
 }
 
 /**
- * cancelCheckout â€” closes the confirm modal
+ * cancelCheckout — closes the confirm modal
  */
 function cancelCheckout() {
   const modal = document.getElementById("confirm-modal");
@@ -469,15 +469,15 @@ function cancelCheckout() {
 }
 
 /* =============================================
-   IA#2 â€” LOGIN PAGE
+   IA#2 — LOGIN PAGE
    ============================================= */
 
 /**
- * handleLogin â€” validates and processes login form
+ * handleLogin — validates and processes login form
  * Creator: Karlyle Ambursley
  */
 function handleLogin(e) {
-  /* IA#2 â€” Event handler: form submit */
+  /* IA#2 — Event handler: form submit */
   e.preventDefault();
   let valid = true;
 
@@ -487,13 +487,13 @@ function handleLogin(e) {
   clearError("login-username");
   clearError("login-password");
 
-  /* IA#2 â€” Form validation: empty check */
+  /* IA#2 — Form validation: empty check */
   if (!username) { showError("login-username", "Username is required."); valid = false; }
   if (!password) { showError("login-password", "Password is required."); valid = false; }
 
   if (!valid) return;
 
-  /* IA#2 â€” Check against stored users */
+  /* IA#2 — Check against stored users */
   const users = JSON.parse(localStorage.getItem("tn_users") || "[]");
   const user  = users.find(u => u.username === username && u.password === password);
 
@@ -509,15 +509,15 @@ function handleLogin(e) {
 }
 
 /* =============================================
-   IA#2 â€” REGISTER PAGE
+   IA#2 — REGISTER PAGE
    ============================================= */
 
 /**
- * handleRegister â€” validates and processes registration form
+ * handleRegister — validates and processes registration form
  * Creator: Karlyle Ambursley
  */
 function handleRegister(e) {
-  /* IA#2 â€” Event handler: form submit */
+  /* IA#2 — Event handler: form submit */
   e.preventDefault();
   let valid = true;
 
@@ -530,10 +530,10 @@ function handleRegister(e) {
     "reg-confirm":  document.getElementById("reg-confirm")?.value
   };
 
-  /* IA#2 â€” Clear all errors first */
+  /* IA#2 — Clear all errors first */
   Object.keys(fields).forEach(id => clearError(id));
 
-  /* IA#2 â€” Validate each field */
+  /* IA#2 — Validate each field */
   if (!fields["reg-name"])     { showError("reg-name",     "Full name is required.");       valid = false; }
   if (!fields["reg-dob"])      { showError("reg-dob",      "Date of birth is required.");   valid = false; }
   if (!fields["reg-email"])    { showError("reg-email",    "Email is required.");            valid = false; }
@@ -549,13 +549,13 @@ function handleRegister(e) {
 
   if (!valid) return;
 
-  /* IA#2 â€” Check for duplicate username */
+  /* IA#2 — Check for duplicate username */
   const users = JSON.parse(localStorage.getItem("tn_users") || "[]");
   if (users.find(u => u.username === fields["reg-username"])) {
     showError("reg-username", "Username already taken."); return;
   }
 
-  /* IA#2 â€” Save new user */
+  /* IA#2 — Save new user */
   users.push({
     name:     fields["reg-name"],
     dob:      fields["reg-dob"],
@@ -566,17 +566,17 @@ function handleRegister(e) {
   localStorage.setItem("tn_users", JSON.stringify(users));
 
   const alertEl = document.getElementById("reg-alert");
-  if (alertEl) { alertEl.textContent = "Account created! Redirecting to loginâ€¦"; alertEl.className = "alert alert-success show"; }
+  if (alertEl) { alertEl.textContent = "Account created! Redirecting to login…"; alertEl.className = "alert alert-success show"; }
   setTimeout(() => { window.location.href = "login.html"; }, 1500);
 }
 
 /**
- * updateStrengthBar â€” visually shows password strength
+ * updateStrengthBar — visually shows password strength
  * @param {string} pw
  * Creator: Karlyle Ambursley
  */
 function updateStrengthBar(pw) {
-  /* IA#2 â€” DOM Manipulation: querySelector, style */
+  /* IA#2 — DOM Manipulation: querySelector, style */
   const fill = document.getElementById("strength-fill");
   if (!fill) return;
   let score = 0;
@@ -590,4 +590,3 @@ function updateStrengthBar(pw) {
   fill.style.width      = score > 0 ? widths[score - 1] : "0%";
   fill.style.background = score > 0 ? colours[score - 1] : "transparent";
 }
-
